@@ -57,13 +57,13 @@ jobs:
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
-          git add cv.pdf
+          git add main.pdf
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git remote update
           git fetch
           git checkout --track origin/gh-pages
-          git checkout main cv.pdf
-          git add cv.pdf
+          git checkout main main.pdf
+          git add main.pdf
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push 
 
