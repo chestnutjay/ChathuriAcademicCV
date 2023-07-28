@@ -15,14 +15,14 @@ jobs:
         uses: thomas-chauvet/latex2pdf-action@1.0.4
         with:
           output_dir: .
-          main_latex_file: cv.tex
+          main_latex_file: main.tex
           ctan_packages: marvosym float arydshln luatexbase multirow fontawesome5 xargs lipsum enumitem tabularx changepage qrcode multirow import fontspec supertabular titlesec hyperref etaremune
       - name: latex2pdf
         id: compile-latex-document-2
         uses: thomas-chauvet/latex2pdf-action@1.0.4
         with:
             output_dir: .
-            main_latex_file: cv.tex
+            main_latex_file: main.tex
             ctan_packages: marvosym float arydshln luatexbase multirow fontawesome5 xargs lipsum enumitem tabularx changepage qrcode multirow import fontspec supertabular titlesec hyperref etaremune
       - name: Upload CV in PDF to the workflow tab
         id: upload-workflow-tab
