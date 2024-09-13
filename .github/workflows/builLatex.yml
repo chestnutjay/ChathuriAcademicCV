@@ -26,7 +26,7 @@ jobs:
             ctan_packages: marvosym float arydshln luatexbase multirow fontawesome5 xargs lipsum enumitem tabularx changepage qrcode multirow import fontspec supertabular titlesec hyperref etaremune
       - name: Upload CV in PDF to the workflow tab
         id: upload-workflow-tab
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: cv
           path: ./main.pdf
