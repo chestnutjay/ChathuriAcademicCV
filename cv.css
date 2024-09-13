@@ -172,7 +172,7 @@ p + figcaption, img + figcaption{margin-top: 1em;}
 .small-caps{font-variant: small-caps;}
 .rotatebox{display: inline-block;}
 .supertabular {text-align:center}
- body { color:    rgb(23, 23, 23); } @media screen and (prefers-color-scheme: dark){ body { color: rgb(217, 217, 217); } }
+ body { color:    rgb(23, 23, 23); } 
  a { color: rgb(0, 112, 201); } @media screen and (prefers-color-scheme: dark) { a { color: rgb( 100, 210, 255); } }
 body{font-family: 'Ubuntu', sans-serif;}
  span.verb, span.cmtt-10, span.cmtt-8{font-family:'Ubuntu Mono', monospace;font-size:1em}
