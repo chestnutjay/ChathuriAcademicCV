@@ -30,6 +30,8 @@ jobs:
       - name: Compile cv.tex to PDF
         run: |
           latexmk -lualatex -interaction=nonstopmode -halt-on-error cv.tex
+      - name: Check the directory structure
+        run: ls -R
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
@@ -90,7 +92,7 @@ jobs:
           git config --global user.email "username@users.noreply.github.com"
           git fetch origin gh-pages
           git checkout gh-pages
-          cp ../main.pdf ./main.pdf
+          cp ./main.pdf ./main.pdf
           git add main.pdf
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}" || echo "No changes to commit"
           git push origin gh-pages
