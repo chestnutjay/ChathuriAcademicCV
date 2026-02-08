@@ -15,11 +15,7 @@ jobs:
       - name: Install TeX Live
         uses: xu-cheng/texlive-action@v2
         with:
-          packages: >
-            scheme-medium
-            latexmk
-            lualatex
-
+          scheme: medium
       - name: Compile cv.tex to PDF
         run: |
           latexmk -lualatex -interaction=nonstopmode -halt-on-error cv.tex
