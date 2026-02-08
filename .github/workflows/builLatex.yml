@@ -29,16 +29,14 @@ jobs:
 
       - name: Compile cv.tex to PDF
         run: |
-          mkdir -p out
           latexmk -lualatex -interaction=nonstopmode -halt-on-error cv.tex
-          mv out/cv.pdf out/main.pdf
       - name: Check the directory structure
         run: ls -R
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: cv
-          path: ./out/main.pdf
+          path: ./main.pdf
 # jobs:
 #   build_latex:
 #     runs-on: ubuntu-latest
@@ -92,17 +90,15 @@ jobs:
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
-          # Fetch and switch to gh-pages branch
-          git fetch origin gh-pages
-          git checkout gh-pages
-
-          # Copy the generated PDF from workflow folder to gh-pages root
-          cp ./out/main.pdf ./main.pdf
-
-          # Commit & push only if there are changes
-          git add main.pdf
-          git diff --cached --quiet || git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push origin gh-pages
+          git add cv.pdf
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git remote update
+          git fetch
+          git checkout --track origin/gh-pages
+          git checkout main cv.pdf
+          git add cv.pdf
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push 
           
 
       # - # git add main.pdf
