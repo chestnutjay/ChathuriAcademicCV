@@ -1,25 +1,30 @@
 name: LateX CV to PDF 
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
 permissions:
-    contents: write
+  contents: write
 
 jobs:
   build-pdf:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install TeX Live
+      - name: Set up TeX Live
         uses: xu-cheng/texlive-action@v2
         with:
           scheme: medium
+
       - name: Compile cv.tex to PDF
         run: |
           latexmk -lualatex -interaction=nonstopmode -halt-on-error cv.tex
-
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
