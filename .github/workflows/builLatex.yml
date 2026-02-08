@@ -5,31 +5,56 @@ permissions:
     contents: write
 
 jobs:
-  build_latex:
+  build-pdf:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v2
-      - name: latex2pdf
-        id: compile-latex-document
-        uses: thomas-chauvet/latex2pdf-action@1.0.4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
         with:
-          output_dir: .
-          main_latex_file: main.tex
-          ctan_packages: marvosym float arydshln luatexbase multirow fontawesome5 xargs lipsum enumitem tabularx changepage qrcode multirow import fontspec supertabular titlesec hyperref etaremune
-      - name: latex2pdf
-        id: compile-latex-document-2
-        uses: thomas-chauvet/latex2pdf-action@1.0.4
-        with:
-            output_dir: .
-            main_latex_file: main.tex
-            ctan_packages: marvosym float arydshln luatexbase multirow fontawesome5 xargs lipsum enumitem tabularx changepage qrcode multirow import fontspec supertabular titlesec hyperref etaremune
-      - name: Upload CV in PDF to the workflow tab
-        id: upload-workflow-tab
+          packages: >
+            scheme-medium
+            latexmk
+            lualatex
+
+      - name: Compile cv.tex to PDF
+        run: |
+          latexmk -lualatex -interaction=nonstopmode -halt-on-error cv.tex
+
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: cv
           path: ./main.pdf
+# jobs:
+#   build_latex:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Set up Git repository
+#         uses: actions/checkout@v2
+#       - name: latex2pdf
+#         id: compile-latex-document
+#         uses: thomas-chauvet/latex2pdf-action@1.0.4
+#         with:
+#           output_dir: .
+#           main_latex_file: main.tex
+#           ctan_packages: marvosym float arydshln luatexbase multirow fontawesome5 xargs lipsum enumitem tabularx changepage qrcode multirow import fontspec supertabular titlesec hyperref etaremune
+#       - name: latex2pdf
+#         id: compile-latex-document-2
+#         uses: thomas-chauvet/latex2pdf-action@1.0.4
+#         with:
+#             output_dir: .
+#             main_latex_file: main.tex
+#             ctan_packages: marvosym float arydshln luatexbase multirow fontawesome5 xargs lipsum enumitem tabularx changepage qrcode multirow import fontspec supertabular titlesec hyperref etaremune
+#       - name: Upload CV in PDF to the workflow tab
+#         id: upload-workflow-tab
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: cv
+#           path: ./main.pdf
 
       # - name: Checkout
       #   uses: actions/checkout@v2
