@@ -21,6 +21,16 @@
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
+\usepackage{enumitem}
+\usepackage{tabularx}
+
+\newcommand{\serviceentry}[2]{
+\par\noindent
+\textbf{#1} \\
+#2
+\par\vspace{0.6em}
+}
+
 %FONTS
 \defaultfontfeatures{Mapping=tex-text}
 %\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
@@ -73,10 +83,16 @@ ItalicFont = Fontin-Italic.otf
 
 %--------------------TITLE-------------
 \par{\centering{\Huge Chathuri \Huge Jayaweera }\par}
-\centering{ 
+\begin{center} 
 \href{mailto:chathurijayaweera@gmail.com}{chathuri.jayawee@ufl.edu} 
 % \textbar \ +1 (352) 870 9914 
-\textbar \ \href{https://www.linkedin.com/in/chathurijayaweera/}{linkedin.com/chathurijayaweera}  \textbar \ \href{https://chestnutjay.github.io/}{chestnutjay.github.io}}   % Your phone number and email
+\textbar \ \href{https://www.linkedin.com/in/chathurijayaweera/}{linkedin.com/chathurijayaweera}  \textbar \ \href{https://chestnutjay.github.io/}{chestnutjay.github.io} 
+\end{center} 
+
+% \centering{ 
+% \href{mailto:chathurijayaweera@gmail.com}{chathuri.jayawee@ufl.edu} 
+% % \textbar \ +1 (352) 870 9914 
+% \textbar \ \href{https://www.linkedin.com/in/chathurijayaweera/}{linkedin.com/chathurijayaweera}  \textbar \ \href{https://chestnutjay.github.io/}{chestnutjay.github.io} \par}   % Your phone number and email
 \bigskip
 %--------------------SECTIONS-----------------------------------
 %Section: Personal Data
@@ -93,8 +109,10 @@ ItalicFont = Fontin-Italic.otf
 \vspace{-0.18in}
 
 \input{industry_experience}
-\vspace{-0.14in}
+\vspace{-0.1in}
 \input{projects}
+\input{talks}
+\input{academic_services}
 % \input{publications}
 \input{os-projects}
 
@@ -110,7 +128,6 @@ ItalicFont = Fontin-Italic.otf
 
 
 \bigskip
-
 \input{awards}
 
 \bigskip
