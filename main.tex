@@ -61,6 +61,14 @@ ItalicFont = Fontin-Italic.otf
 % \textblockorigin{2mm}{0.65\paperheight}
 % \setlength{\parindent}{0pt}
 
+\newcommand{\grantentry}[4]{
+\noindent
+\textbf{#1} \hfill #2 \\
+#3 \\
+{\small Role: #4}
+\vspace{0.7em}
+}
+
 %--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
@@ -111,9 +119,11 @@ ItalicFont = Fontin-Italic.otf
 \input{industry_experience}
 \vspace{-0.1in}
 \input{projects}
+\input{grants}
 \input{talks}
 \input{academic_services}
 % \input{publications}
+% \vspace{0.05in}
 \input{os-projects}
 
 % \vspace{-0.05in}
